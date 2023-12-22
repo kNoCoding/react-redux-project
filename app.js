@@ -1,6 +1,6 @@
 // app.js
 
-import { App } from './root-cmp.jsx'
+import { App } from './RootCmp.jsx'
 
 const elContainer = document.getElementById('root')
 const root = ReactDOM.createRoot(elContainer)

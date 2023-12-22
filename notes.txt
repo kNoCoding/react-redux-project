@@ -1,0 +1,15 @@
+1. create components and make sure app still renders as expected
+
+
+this is how to todo going to be:
+{
+_id,
+txt,
+isDone,
+createdAt
+}
+
+
+2. create/edit the necessary services
+3. update the store
+4. connect comps and services
