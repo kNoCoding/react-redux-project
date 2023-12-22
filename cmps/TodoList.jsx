@@ -4,17 +4,24 @@ const { Outlet, Link, useNavigate } = ReactRouterDOM
 
 import { TodoPreview } from './TodoPreview.jsx'
 
-export function TodoList() {
+export function TodoList({ todos, onRemoveTodo }) {
 
+    const navigate = useNavigate()
 
-    
     return (
-        <React.Fragment>
-
-            <h3>The todos will be shown here in a list</h3>
-
-            <TodoPreview />
-
-        </React.Fragment>
+        <section className="todo-list">
+            {todos.map(todo => (
+                <article className="todo-preview" key={todo._id}>
+                    <TodoPreview todo={todo} />
+                    <div className="flex space-between">
+                        <button className="btn" onClick={() => navigate('/todo/edit/' + todo._id)}>Edit</button>
+                        <button className="btn" onClick={() => onRemoveTodo(todo._id)}>Delete</button>
+                        <Link to={`/todo/${todo._id}`} className="btn">
+                            <button type="button">Details</button>
+                        </Link>
+                    </div>
+                </article>
+            ))}
+        </section>
     )
 }

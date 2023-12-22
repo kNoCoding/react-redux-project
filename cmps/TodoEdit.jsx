@@ -30,8 +30,6 @@ export function TodoEdit() {
 
     function handleChange(e) {
         const { name, value } = e.target
-        console.log(`++++++ name:`, name)
-        console.log(`++++++ value:`, value)
         setTodo(prevTodo => ({ ...prevTodo, [name]: value }))
     }
 
@@ -51,12 +49,14 @@ export function TodoEdit() {
                         />
                     </div>
                     <div>
-                        <label>Done?:</label>
+                        <label>Task is done? </label>
                         <input
                             type="checkbox"
                             name="isDone"
+                            // value={todo.isDone ? true : false}
                             value={todo.isDone}
                             onChange={handleChange}
+                        // defaultChecked={todo.isDone ? true : false}
                         />
                     </div>
                     <button className="btn" type="submit">

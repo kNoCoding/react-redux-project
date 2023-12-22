@@ -39,9 +39,10 @@ function getEmptyTodo() {
     return {
         txt: 'New todo' + (Date.now() % 1000),
         isDone: false,
+        createdAt: Date.now()
     }
 }
 
 // TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 6', price: 980}).then(x => console.log(x))
+// storageService.post(STORAGE_KEY, { txt: 'I tried the new todoDB', isDone: true, createdAt: Date.now() }).then(x => console.log("x:", x))
 

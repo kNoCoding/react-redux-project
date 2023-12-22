@@ -1,11 +1,17 @@
 // TodoPreview.jsx
 
-export function TodoPreview() {
+export function TodoPreview({ todo }) {
 
     return (
-        <div className="single-todo flex align-center justify-center" >
-            <input type="checkbox" name="toggle-todo" id="toggle-todo" />
-            <pre>Todo text will be here dynamically</pre>
-        </div>
+        <section className="todo-preview">
+            
+            <div className="single-todo" >
+                <input type="checkbox" name="toggle-todo" id="toggle-todo" defaultChecked={todo.isDone ? true : false} />
+                <p>{todo.txt}</p>
+                <small>{todo._id}</small>
+            </div>
+
+        </section >
+
     )
 }

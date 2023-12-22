@@ -3,8 +3,8 @@
 export function TodoFilter() {
 
     return (
-        <React.Fragment>
+        <div>
             <input type="text" placeholder="Filter by text" />
-        </React.Fragment>
+        </div>
     )
 }

@@ -29,14 +29,10 @@ export function TodoDetails() {
             <div className="todo-details main-layout">
                 <h1>Todo Details 📃</h1>
                 <h2>{todo.txt}</h2>
-                <p>
-                    Done:{' '}
-                    <span className={'is-done' + todo.isDone}>{todo.isDone}</span>
-                </p>
-                <p>
-                    Created at: <span>{todo.createdAt}</span>
-                </p>
-                <Link to="/todo">Back to List</Link>
+                <p>Task is {todo.isDone ? 'done!' : 'not done yet.'}</p>
+                <p>Created at: {todo.createdAt}</p>
+                <p>ID: {todo._id}</p>
+                <Link to="/todo"><button>Back to List</button></Link>
             </div>
         )
     )
