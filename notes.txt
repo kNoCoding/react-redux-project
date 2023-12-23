@@ -12,14 +12,17 @@ createdAt
 
 2. create/edit the necessary services
 
-++++++++todo.service.js - working on this ATM
+todo.service.js
 
-make sure to come back and implement the:
+___________________ implement: ___________________ 
+
 	TodoList
 	TodoFilter
 	TodoPreview
 	TodoIndex
 	
+__________________________________________________	
+
 
 3. update the store
 4. connect comps and services

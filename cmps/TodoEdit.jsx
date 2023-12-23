@@ -16,21 +16,42 @@ export function TodoEdit() {
     useEffect(() => {
         if (todoId) {
             todoService.getById(todoId).then(todo => {
-                setTodo(todo)
+                setTodo({
+                    ...todo,
+                    isDone: todo.isDone === 'true' // Convert isDone to boolean
+                })
             })
         }
     }, [todoId])
 
 
+    // function handleSubmit(e) {
+    //     e.preventDefault()
+    //     if (!todo.txt || !todo.isDone) return
+    //     todoId ? onUpdateTodo(todo) : onAddTodo(todo)
+    // }
+
     function handleSubmit(e) {
-        e.preventDefault()
-        if (!todo.txt || !todo.isDone) return
-        todoId ? onUpdateTodo(todo) : onAddTodo(todo)
+        e.preventDefault();
+        const todoToSave = {
+            ...todo,
+            isDone: !!todo.isDone, // Ensure isDone is a boolean
+        };
+        todoId ? onUpdateTodo(todoToSave) : onAddTodo(todoToSave);
+        navigate('/todo'); // Navigate back to the todo list after saving
     }
 
+    // function handleChange(e) {
+    //     const { name, value } = e.target
+    //     setTodo(prevTodo => ({ ...prevTodo, [name]: value }))
+    // }
+
     function handleChange(e) {
-        const { name, value } = e.target
-        setTodo(prevTodo => ({ ...prevTodo, [name]: value }))
+        const { name, type, checked, value } = e.target;
+        setTodo((prevTodo) => ({
+            ...prevTodo,
+            [name]: type === 'checkbox' ? checked : value, // Properly handle checkbox changes
+        }));
     }
 
 
@@ -55,6 +76,7 @@ export function TodoEdit() {
                             name="isDone"
                             // value={todo.isDone ? true : false}
                             value={todo.isDone}
+                            checked={!!todo.isDone} // Use checked for controlled checkbox
                             onChange={handleChange}
                         // defaultChecked={todo.isDone ? true : false}
                         />

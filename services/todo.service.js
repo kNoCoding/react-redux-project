@@ -17,6 +17,13 @@ export const todoService = {
 function query() {
     // return axios.get(BASE_URL).then(res => res.data)
     return storageService.query(STORAGE_KEY)
+        .then(todos => {
+            // Convert isDone from string to boolean
+            return todos.map(todo => ({
+                ...todo,
+                isDone: todo.isDone === 'true'  // Ensure isDone is a boolean
+            }));
+        });
 }
 function getById(todoId) {
     return storageService.get(STORAGE_KEY, todoId)

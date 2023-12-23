@@ -13,8 +13,9 @@ import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 export function TodoIndex() {
 
     const [todos, setTodos] = useState([])
-
     const navigate = useNavigate()
+
+
     useEffect(() => {
         loadTodos()
         // }, [filterBy, sortBy])                                   ++++++++ add it back when the filter and sort are implemented
@@ -68,7 +69,7 @@ export function TodoIndex() {
                         currTodo._id === savedTodo._id ? savedTodo : currTodo
                     )
                 )
-                showSuccessMsg('Todo updated')
+                showSuccessMsg(`Todo ${todo._id} updated`)
                 navigate('/todo')
             })
             .catch(err => {
@@ -80,10 +81,12 @@ export function TodoIndex() {
     return (
         <main className='main-layout'>
             <Link to="/todo/edit" className="btn"><button type="button">Add New Task</button></Link>
+
+
             <h3>Todos App</h3>
             <TodoFilter />
             <Outlet context={{ onAddTodo, onUpdateTodo }} />
-            <TodoList todos={todos} onRemoveTodo={onRemoveTodo} />
+            <TodoList todos={todos} onRemoveTodo={onRemoveTodo} onUpdateTodo={onUpdateTodo} />
 
         </main>
     )
